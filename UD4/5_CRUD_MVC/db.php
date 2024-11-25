@@ -1,6 +1,6 @@
 <?php
     $host = 'localhost';
-    $db = 'dwes';
+    $db = 'DWES';
     $user = 'root'; // Cambia esto según tu configuración
     $pass = '1234'; // Cambia esto según tu configuración
 
@@ -9,9 +9,10 @@
     If an exception is thrown, the code inside the `catch` block will
     be executed to handle the error. */
     try {
-        $pdo = new PDO($host, $user, $pass);
+        $pdo = new PDO("mysql:host=$host;dbname=$db;charset=utf8", $user, $pass);
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     } catch (PDOException $e) {
         echo "Error de conexión: " . $e->getMessage();
     }
+    
 ?>

@@ -8,14 +8,14 @@ class Coche {
 
     public function getAll() {
         $stmt = $this->pdo->query("SELECT * FROM coches");
-        return $stmt->fetch(PDO::FETCH_ASSOC);
-    //Viene en el Punto 3 PDO 
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+    
 
     public function crear($marca, $modelo, $anio) {
-        $stmt = $this->pdo->query("INSERT INTO coches (marca, modelo, anio) VALUES (:marca, :modelo, :anio)");
+        $stmt = $this->pdo->prepare("INSERT INTO coches (marca, modelo, anio) VALUES (:marca, :modelo, :anio)");
         $stmt->execute([':marca' => $marca, ':modelo' => $modelo, ':anio' => $anio]);
-    }
+    }    
 
     public function editar($id, $marca, $modelo, $anio) {
         $stmt = $this->pdo->prepare("UPDATE coches SET marca = :marca, modelo = :modelo, anio = :anio WHERE id = :id");

@@ -8,7 +8,7 @@
     <h1>Gestión de Coches</h1>
 
     <form method="POST" action="index.php?action=crear">
-        <input type="hidden" name="id" value="<?= isset($coche) ? $coche['id'] : '' ?>">
+        <input type="hidden" name="id" value="<?= isset($reserva) ? $reserva['id'] : '' ?>">
         <label>Marca: <input type="text" name="marca" required></label><br>
         <label>Modelo: <input type="text" name="modelo" required></label><br>
         <label>Año: <input type="number" name="anio" required></label><br>
@@ -25,24 +25,25 @@
             <th>Año</th>
             <th>Acciones</th>
         </tr>
-        <?php foreach ($coches as $coche): ?>
+        <?php foreach ($reservas as $reserva): ?>
         <tr>
-            <td><?= $coche['id'] ?></td>
-            <td><?= $coche['marca'] ?></td>
-            <td><?= $coche['modelo'] ?></td>
-            <td><?= $coche['anio'] ?></td>
+            <td><?= $reserva['id'] ?></td>
+            <td><?= $reserva['marca'] ?></td>
+            <td><?= $reserva['modelo'] ?></td>
+            <td><?= $reserva['anio'] ?></td>
             <td>
                 <form method="POST" action="index.php?action=editar" style="display:inline;">
-                    <input type="hidden" name="id" value="<?= $coche['id'] ?>">
-                    <input type="text" name="marca" value="<?= $coche['marca'] ?>" required>
-                    <input type="text" name="modelo" value="<?= $coche['modelo'] ?>" required>
-                    <input type="number" name="anio" value="<?= $coche['anio'] ?>" required>
+                    <input type="hidden" name="id" value="<?= $reserva['id'] ?>">
+                    <input type="text" name="marca" value="<?= $reserva['marca'] ?>" required>
+                    <input type="text" name="modelo" value="<?= $reserva['modelo'] ?>" required>
+                    <input type="number" name="anio" value="<?= $reserva['anio'] ?>" required>
                     <button type="submit">Actualizar</button>
                 </form>
-                <form method="POST" action="../../controllers/cocheController.php" style="display:inline;">
-                    <input type="hidden" name="id" value="<?= $coche['id'] ?>">
+                <form method="POST" action="index.php?action=eliminar" style="display:inline;">
+                    <input type="hidden" name="id" value="<?= $reserva['id'] ?>">
                     <button type="submit">Eliminar</button>
                 </form>
+
             </td>
         </tr>
         <?php endforeach; ?>
