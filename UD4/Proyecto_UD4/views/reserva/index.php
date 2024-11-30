@@ -11,7 +11,7 @@
         <input type="hidden" name="id" value="<?= isset($reserva) ? $reserva['id'] : '' ?>">
         <label>ID_Cliente: <input type="text" name="id_cliente" required></label><br>
         <label>Fecha reserva: <input type="text" name="fecha_reserva" required></label><br>
-        <label>estado: <input type="checkbox" name="estado" required></label><br>
+        <label>estado: <input type="checkbox" name="estado"></label><br>
         <button type="submit">Añadir Reserva</button>
     </form>
 

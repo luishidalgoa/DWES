@@ -9,23 +9,29 @@ class ReservaController {
     public function __construct($pdo) {
         $this->reservaModel = new Reserva($pdo);
     }
-
+    /**
+     * 
+     * este es el metodo que se ejecutara desde index.php y sera el encargado de iniciar la vista de la reserva.
+     * previamente a iniciar esa vista, habremos solicitado a la bbdd para obtener los datos de las reservas. y sean consumidas por la vista
+     * @return void
+     */
     public function index() {
-        $reservas = $this->reservaModel->getAll(); // Obtiene los coches de la base de datos.
+        $reservas = $this->reservaModel->getAll(); // Obtiene las reservas de la base de datos.
         if (!$reservas) {
-            $coches = []; // Asegura que $coches sea un array vacío si no hay datos.
+            $reservas = []; // Asegura que $reservas sea un array vacío si no hay datos.
         }
+        //Llamamos a la vista
         include 'views/reserva/index.php';
     }
     
-
+    
     public function crear() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $id_cliente = $_POST['id_cliente'] ?? null;
             $fecha_reserva = $_POST['fecha_reserva'] ?? null;
-            $estado = $_POST['estado'] == 'on' ? true : false ?? false;
-    
-            if ($id_cliente && $fecha_reserva && $estado) {
+            $estado = isset($_POST['estado']) ? true : false ?? false;
+
+            if ($id_cliente && $fecha_reserva) {
                 $this->reservaModel->crear($id_cliente, $fecha_reserva, $estado);
                 header("Location: index.php");
             } else {
