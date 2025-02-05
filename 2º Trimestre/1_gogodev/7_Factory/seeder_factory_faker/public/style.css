@@ -1,0 +1,25 @@
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem; /* Espacio entre las tarjetas */
+}
+
+.card {
+    flex: 1 1 30%; /* Cada card ocupará un 30% del contenedor */
+    box-sizing: border-box;
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+@media (max-width: 768px) {
+    .card {
+        flex: 1 1 45%; /* En pantallas pequeñas, las tarjetas ocupan el 45% */
+    }
+}
+
+@media (max-width: 480px) {
+    .card {
+        flex: 1 1 100%; /* En pantallas aún más pequeñas, las tarjetas ocupan el 100% */
+    }
+}
