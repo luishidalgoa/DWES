@@ -1,0 +1,1 @@
+<h1>holaaa</h1><?php /**PATH C:\xampp\htdocs\DWES\2º Trimestre\2_proyectoFpDual\empresas\resources\views/company/company.blade.php ENDPATH**/ ?>
